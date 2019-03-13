@@ -23,8 +23,11 @@ class mythread(threading.Thread):
         self.args=args
         self._exit_flag=False
     def run(self):
-        a,b=self.args
-        self.func(a,b)
+        if self.name=='count':
+            n,=self.args
+            self.func(self.name,n)
+        else:
+            self.func()
 
     @property
     def exit_flag(self):
@@ -37,12 +40,14 @@ def count(threadname,init_num):
     start_num=init_num
     while not exit_flag:
         start_num+=1
+        print(f'get a new file:{start_num}')
         uploading_files.put_nowait(start_num)
         time.sleep(1)
 # 模拟上传文件
 def upload_to_server(*args):
     while not exit_flag:
         if uploading_files.not_empty:
+            print(f'queue statuse:{uploading_files.empty()}')
             upload_file=uploading_files.get(False)
             print(f"is uploading files:{upload_file}")
         else:
@@ -51,8 +56,8 @@ def upload_to_server(*args):
 uploading_files=queue.Queue(100)
 exit_flag=False
 thread_lock=threading.Lock()
-mythread1=mythread('1',count,0,1)
-mythread2=mythread('2',upload_to_server)
+mythread1=mythread('count',count,2)
+mythread2=mythread('upload_to_server',upload_to_server)
 mythread1.start()
 mythread2.start()
 
@@ -62,8 +67,9 @@ while n<10:
     n+=1
     print(f"main thread:{n}")
     if n==9:
-        mythread1.exit_flag=True
-        mythread2.exit_flag=True
+        thread_lock.acquire()
+        exit_flag=True
+        thread_lock.release()
 
 mythread1.join()
 mythread2.join()
