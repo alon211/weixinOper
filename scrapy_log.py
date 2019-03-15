@@ -32,6 +32,6 @@ def get_newlogset(path,uploadedfiles:set):
     return unuploadedfiles
 
 
-# gernerate_log(PATH,'123','alarm')
+gernerate_log(PATH,'123','alarm')
 # uploadedfiles={'alarm 2019-03-12 21-42.txt', 'alarm 2019-03-12 20-38-00.txt', 'alarm 2019-03-12 20-59.txt', 'alarm 2019-03-12 20-38-15.txt'}
 # print(get_newlogset(PATH,uploadedfiles))

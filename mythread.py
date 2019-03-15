@@ -2,74 +2,47 @@ import threading
 import time
 from scrapy_log import *
 import queue
-# class mythread(threading.Thread):
-#     def __init__(self,name,func,*args):
-#         threading.Thread.__init__(self)
-#         self.thread_name=name
-#         self.func=func
-#         self.args=args
-#         self._exit_falg=False
-#     def run(self):
-#         while not self._exit_flag:
-#             print(f'thread {self.name} is running......')
-#
-#         print(f'thread {self.name} is stopping......')
-
-class mythread(threading.Thread):
-    def __init__(self,name,func,*args):
-        threading.Thread.__init__(self)
-        self.name=name
-        self.func=func
-        self.args=args
-        self._exit_flag=False
-    def run(self):
-        if self.name=='count':
-            n,=self.args
-            self.func(self.name,n)
-        else:
-            self.func()
-
-    @property
-    def exit_flag(self):
-        return self._exit_flag
-    @exit_flag.setter
-    def exit_flag(self,value):
-        self._exit_flag=value
+PATH=r'C:\Users\admin\PycharmProjects\weixinOper\log'
+data_queue=queue.Queue()
+uploadedfiles=set()
 # 模拟生成新的文件
-def count(threadname,init_num):
-    start_num=init_num
+def product(*args):
+    data,exit_flag=args
+    thread_name=threading.current_thread().name
+    print(f'{thread_name}: start!')
     while not exit_flag:
-        start_num+=1
-        print(f'get a new file:{start_num}')
-        uploading_files.put_nowait(start_num)
         time.sleep(1)
+        tmp=get_newlogset(PATH,uploadedfiles)
+        if tmp=={}:
+            print('{thread_name}:no new file')
+            continue
+        for i in tmp:
+            print(f'{thread_name} is putting data on the queue')
+            data.put(i)
+        print(f'{thread_name} have put data on the queue')
+        print(f'{thread_name}- data size :{data.qsize()}')
 # 模拟上传文件
-def upload_to_server(*args):
-    while not exit_flag:
-        if uploading_files.not_empty:
-            print(f'queue statuse:{uploading_files.empty()}')
-            upload_file=uploading_files.get(False)
-            print(f"is uploading files:{upload_file}")
-        else:
-            print('no file to upload')
-        time.sleep(1)
+def consumer(*args):
+    data,=args
+    thread_name=threading.current_thread().name
+    print(f'{thread_name}: start!')
+    while True:
+        try:
+            value=data.get()
+            uploadedfiles.add(value)
+            print(f'{thread_name} get a vaule:{value} in the queue')
+            print(f'{thread_name}- data size :{data.qsize()}')
+        except :
+            print(f'the queue is empty,{thread_name} is waiting a value ')
+
+
 uploading_files=queue.Queue(100)
 exit_flag=False
 thread_lock=threading.Lock()
-mythread1=mythread('count',count,2)
-mythread2=mythread('upload_to_server',upload_to_server)
-mythread1.start()
-mythread2.start()
+thread_prodcut=threading.Thread(target=product,name='product',args=(data_queue,exit_flag))
+thread_consumer=threading.Thread(target=consumer,name='consumer',args=(data_queue,))
+thread_prodcut.start()
+thread_consumer.start()
 
-n=0
-while n<10:
-    time.sleep(1)
-    n+=1
-    print(f"main thread:{n}")
-    if n==9:
-        thread_lock.acquire()
-        exit_flag=True
-        thread_lock.release()
-
-mythread1.join()
-mythread2.join()
+thread_prodcut.join()
+thread_consumer.join()
