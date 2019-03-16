@@ -11,14 +11,19 @@ def product(*args):
     thread_name=threading.current_thread().name
     print(f'{thread_name}: start!')
     while not exit_flag:
-        time.sleep(1)
+        # time.sleep(1)
         tmp=get_newlogset(PATH,uploadedfiles)
         if tmp=={}:
             print('{thread_name}:no new file')
             continue
+        lock.acquire()
+
         for i in tmp:
             print(f'{thread_name} is putting data on the queue')
+            # print(i)
             data.put(i)
+        lock.release()
+
         print(f'{thread_name} have put data on the queue')
         print(f'{thread_name}- data size :{data.qsize()}')
 # 模拟上传文件
@@ -27,22 +32,22 @@ def consumer(*args):
     thread_name=threading.current_thread().name
     print(f'{thread_name}: start!')
     while True:
+        lock.acquire()
         try:
-            value=data.get()
+            value=data.get(timeout=1)
             uploadedfiles.add(value)
             print(f'{thread_name} get a vaule:{value} in the queue')
             print(f'{thread_name}- data size :{data.qsize()}')
         except :
             print(f'the queue is empty,{thread_name} is waiting a value ')
+        lock.release()
 
-
-uploading_files=queue.Queue(100)
+lock=threading.Lock()
 exit_flag=False
 thread_lock=threading.Lock()
 thread_prodcut=threading.Thread(target=product,name='product',args=(data_queue,exit_flag))
 thread_consumer=threading.Thread(target=consumer,name='consumer',args=(data_queue,))
 thread_prodcut.start()
 thread_consumer.start()
-
 thread_prodcut.join()
 thread_consumer.join()
