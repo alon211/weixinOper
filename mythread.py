@@ -10,19 +10,19 @@ def product(*args):
     data,exit_flag=args
     thread_name=threading.current_thread().name
     print(f'{thread_name}: start!')
+    tmp={}
     while not exit_flag:
         # time.sleep(1)
-        tmp=get_newlogset(PATH,uploadedfiles)
-        if tmp=={}:
-            print('{thread_name}:no new file')
-            continue
-        lock.acquire()
 
-        for i in tmp:
-            print(f'{thread_name} is putting data on the queue')
-            # print(i)
-            data.put(i)
-        lock.release()
+        if len(tmp)==0:
+            print('{thread_name}:no new file')
+            tmp=get_newlogset(PATH,uploadedfiles)
+            continue
+        i=tmp.pop()
+        print(f'{thread_name} is putting data on the queue')
+        # print(i)
+        uploadedfiles.add(i)
+        data.put(i)
 
         print(f'{thread_name} have put data on the queue')
         print(f'{thread_name}- data size :{data.qsize()}')
@@ -32,15 +32,15 @@ def consumer(*args):
     thread_name=threading.current_thread().name
     print(f'{thread_name}: start!')
     while True:
-        lock.acquire()
         try:
+            lock.acquire()
             value=data.get(timeout=1)
-            uploadedfiles.add(value)
+            # uploadedfiles.add(value)
+            lock.release()
             print(f'{thread_name} get a vaule:{value} in the queue')
             print(f'{thread_name}- data size :{data.qsize()}')
         except :
             print(f'the queue is empty,{thread_name} is waiting a value ')
-        lock.release()
 
 lock=threading.Lock()
 exit_flag=False
