@@ -2,6 +2,7 @@ import threading
 import time
 from scrapy_log import *
 import queue
+from upload_github import*
 PATH=r'C:\Users\admin\PycharmProjects\weixinOper\log'
 data_queue=queue.Queue()
 uploadedfiles=set()
@@ -15,7 +16,7 @@ def product(*args):
         # time.sleep(1)
 
         if len(tmp)==0:
-            print('{thread_name}:no new file')
+            print(f'{thread_name}:no new file')
             tmp=get_newlogset(PATH,uploadedfiles)
             continue
         i=tmp.pop()
@@ -23,7 +24,6 @@ def product(*args):
         # print(i)
         uploadedfiles.add(i)
         data.put(i)
-
         print(f'{thread_name} have put data on the queue')
         print(f'{thread_name}- data size :{data.qsize()}')
 # 模拟上传文件
@@ -31,14 +31,21 @@ def consumer(*args):
     data,=args
     thread_name=threading.current_thread().name
     print(f'{thread_name}: start!')
+    isuploaded=True
     while True:
         try:
-            lock.acquire()
-            value=data.get(timeout=1)
-            # uploadedfiles.add(value)
-            lock.release()
-            print(f'{thread_name} get a vaule:{value} in the queue')
-            print(f'{thread_name}- data size :{data.qsize()}')
+            if isuploaded:
+                lock.acquire()
+                value=data.get(timeout=1)
+                # uploadedfiles.add(value)
+                lock.release()
+                print(f'{thread_name} get a vaule:{value} in the queue')
+                print(f'{thread_name}- data size :{data.qsize()}')
+                isuploaded=False
+            else:
+                print(f'{thread_name}: uploading to github')
+                if git_oper(value):
+                    isuploaded=True
         except :
             print(f'the queue is empty,{thread_name} is waiting a value ')
 

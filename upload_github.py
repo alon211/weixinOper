@@ -13,8 +13,20 @@
 # # print(response.json())
 import datetime
 import subprocess
-status=subprocess.run(['git','add','log/alarm 2019-03-12 20-38-00.txt'])
-status=subprocess.run(['git','commit','-m',datetime.datetime.now().strftime('%Y-%m-%d %H-%M')])
-status=subprocess.run(['git','push','--set-upstream','origin','tmp'])
-
-print(status)
+def git_oper(file):
+    status=subprocess.run(['git','add',file])
+    if status.returncode!=0:
+        return False,status.returncode
+    status=subprocess.run(['git','commit','-m',datetime.datetime.now().strftime('%Y-%m-%d %H-%M')])
+    if status.returncode!=0:
+        return False,status.returncode
+    status=subprocess.run(['git','push','--set-upstream','origin','master'])
+    if status.returncode!=0:
+        return False,status.returncode
+    return True,status.returncode
+# status=subprocess.run(['git','add','log/alarm 2019-03-12 20-38-00.txt'])
+# print(status)
+# status=subprocess.run(['git','commit','-m',datetime.datetime.now().strftime('%Y-%m-%d %H-%M')])
+# print(status)
+# status=subprocess.run(['git','push','--set-upstream','origin','master'])
+# print(status)
