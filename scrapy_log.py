@@ -24,14 +24,27 @@ def get_newlogset(path,uploadedfiles:set):
     '''
     # log存放位置所有文件名列表
     files=os.listdir(path)
+    files=map(lambda x: os.path.join(path,x),files)
     files=set(files)
     #上传的文件名和存放的文件名列表合集
     allfiles=uploadedfiles|files
     #差集得出没有上传的文件名列表
     unuploadedfiles=allfiles-uploadedfiles
     return unuploadedfiles
-
-
+def read_uploadedfile(uploadedfile):
+    rst=None
+    with open(uploadedfile,'r') as f:
+        tmp=f.read()
+        rst=tmp.split('\n')
+        return rst
+def save_uploadedfile(uploadedfile,data):
+    rst=None
+    with open(uploadedfile,'a+') as tmp:
+        tmp.write(data+'\n')
+        return True
+# save_uploadedfile('uploadedfiles.txt','1.txt')
+# save_uploadedfile('uploadedfiles.txt','2.txt')
+# print(read_uploadedfile('uploadedfiles.txt'))
 gernerate_log(PATH,'123','alarm')
 # uploadedfiles={'alarm 2019-03-12 21-42.txt', 'alarm 2019-03-12 20-38-00.txt', 'alarm 2019-03-12 20-59.txt', 'alarm 2019-03-12 20-38-15.txt'}
 # print(get_newlogset(PATH,uploadedfiles))
