@@ -39,8 +39,11 @@ def read_uploadedfile(uploadedfile):
         return rst
 def save_uploadedfile(uploadedfile,data):
     rst=None
-    with open(uploadedfile,'a+') as tmp:
-        tmp.write(data+'\n')
+    uploadedfiles=set(read_uploadedfile(uploadedfile))
+    uploadedfiles.add(data)
+    with open(uploadedfile,'w+') as tmp:
+        for data in uploadedfiles:
+            tmp.write(data+'\n')
         return True
 # save_uploadedfile('uploadedfiles.txt','1.txt')
 # save_uploadedfile('uploadedfiles.txt','2.txt')
