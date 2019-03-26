@@ -8,6 +8,7 @@ from time import gmtime
 from scrapy_log import *
 import queue
 from upload_github import*
+from time import gmtime
 import logging
 logging.basicConfig(level=logging.DEBUG,
                     format='%(name)s | %(asctime)s.%(msecs)05d   %(message)s',
@@ -59,8 +60,7 @@ def consumer(*args):
 
 
 PATH=r'C:\Users\admin\PycharmProjects\weixinOper\log'
-data_queue=queue.Queue(10)
-
+data_queue=queue.Queue(20)
 uploadedfiles=set(read_uploadedfile('uploadedfiles.txt'))
 con=threading.Condition()
 isEmpty=True
