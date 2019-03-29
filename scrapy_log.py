@@ -33,21 +33,39 @@ def get_newlogset(path,uploadedfiles:set):
     return unuploadedfiles
 def read_uploadedfile(uploadedfile):
     rst=None
-    with open(uploadedfile,'r') as f:
-        tmp=f.read()
-        rst=tmp.split('\n')
-        return rst
-def save_uploadedfile(uploadedfile,data):
+    try:
+        with open(uploadedfile,'r') as f:
+            tmp=f.read()
+            rst=tmp.split('\n')
+            return rst
+    except:
+        return set()
+def clear_file(filepath):
+    # print(filepath)
+    with open(filepath,'w+') as f:
+            f.write('.')
+def save_uploadedfile(uploadedfile,data:set):
+    '''
+
+    :param uploadedfile: 保存文件路径
+    :param data: 保存的数据
+    :return:
+    '''
     rst=None
-    uploadedfiles=set(read_uploadedfile(uploadedfile))
-    uploadedfiles.add(data)
-    with open(uploadedfile,'w+') as tmp:
-        for data in uploadedfiles:
-            tmp.write(data+'\n')
+    # uploadedfiles=set(read_uploadedfile(uploadedfile))
+    from collections import Iterable
+    # for i in data:
+    #     uploadedfiles.add(i)
+
+    with open(uploadedfile,'a+') as tmp:
+        for i in data:
+            tmp.write(i+'\n')
         return True
 # save_uploadedfile('uploadedfiles.txt','1.txt')
 # save_uploadedfile('uploadedfiles.txt','2.txt')
 # print(read_uploadedfile('uploadedfiles.txt'))
+# save_uploadedfile('failuploadedfiles.txt',{'1.txt'})
+clear_file('failuploadedfiles.txt')
 gernerate_log(PATH,'123','alarm')
 # uploadedfiles={'alarm 2019-03-12 21-42.txt', 'alarm 2019-03-12 20-38-00.txt', 'alarm 2019-03-12 20-59.txt', 'alarm 2019-03-12 20-38-15.txt'}
 # print(get_newlogset(PATH,uploadedfiles))
