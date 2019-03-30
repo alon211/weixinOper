@@ -1,17 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="d6b88c06-1efe-46ef-9df9-1df813e458ca" name="Default" comment="追加Log 毫秒 查看线程情况1">
-      <change beforePath="$USER_HOME$/.PyCharmCE2018.3/system/workspace/weixinoper.6685718a.xml" beforeDir="false" afterPath="$USER_HOME$/.PyCharmCE2018.3/system/workspace/weixinoper.6685718a.xml" afterDir="false" />
+    <list default="true" id="d6b88c06-1efe-46ef-9df9-1df813e458ca" name="Default" comment="创建thread3的异步程序:&#10;1.product读取更新文件在同个线程内，只要读到有更新，就把新的路径添加到文件里去，不管最后是否上传成功&#10;2.增加manager函数进行中转调度处理&#10;3.consumer只进行队列的操作，保证异步时数据的同步性。如果上传失败立马再次放入队列中&#10;4.未完善的是退出后如何将队列中未上传的变量保存到上传失败文件中">
       <change beforePath="$PROJECT_DIR$" beforeDir="false" afterPath="$PROJECT_DIR$" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/failuploadedfiles.txt" beforeDir="false" afterPath="$PROJECT_DIR$/failuploadedfiles.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/help" beforeDir="false" afterPath="$PROJECT_DIR$/help" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scrapy_log.py" beforeDir="false" afterPath="$PROJECT_DIR$/scrapy_log.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test.log" beforeDir="false" afterPath="$PROJECT_DIR$/test.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tmp.py" beforeDir="false" afterPath="$PROJECT_DIR$/tmp.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/uploadedfiles.txt" beforeDir="false" afterPath="$PROJECT_DIR$/uploadedfiles.txt" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -24,7 +16,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://D:/pythonIDE/Anoaconda3/envs/pycharm_conda/Lib/site-packages/wxpy/api/chats/chats.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state>
+            <state relative-caret-position="646">
               <caret line="41" column="24" selection-start-line="41" selection-start-column="24" selection-end-line="41" selection-end-column="24" />
             </state>
           </provider>
@@ -33,7 +25,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/upload_github.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-157">
+            <state relative-caret-position="228">
               <caret line="12" column="21" selection-start-line="12" selection-start-column="21" selection-end-line="12" selection-end-column="21" />
             </state>
           </provider>
@@ -51,7 +43,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/mythread.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-258">
+            <state relative-caret-position="266">
               <caret line="18" selection-start-line="18" selection-end-line="19" />
               <folding>
                 <element signature="e#0#16#0" expanded="true" />
@@ -63,7 +55,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/thread1.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="57">
+            <state relative-caret-position="1482">
               <caret line="84" column="34" selection-start-line="84" selection-start-column="29" selection-end-line="84" selection-end-column="34" />
               <folding>
                 <element signature="e#125#141#0" expanded="true" />
@@ -90,22 +82,19 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/thread3.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="836">
-              <caret line="44" column="93" selection-start-line="44" selection-start-column="93" selection-end-line="44" selection-end-column="93" />
-              <folding>
-                <element signature="e#125#141#0" expanded="true" />
-              </folding>
+            <state>
+              <caret selection-start-column="2" selection-end-line="4" selection-end-column="34" />
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/tmp.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="568">
+            <state relative-caret-position="256">
               <caret line="36" column="22" selection-start-line="36" selection-start-column="22" selection-end-line="36" selection-end-column="22" />
               <folding>
                 <element signature="e#0#16#0" expanded="true" />
@@ -152,7 +141,7 @@
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
         <entry key="C:/" value="master" />
-        <entry key="$PROJECT_DIR$" value="c26a1e334fb89c3e4bedb8ee0a780f020f9b4426" />
+        <entry key="$PROJECT_DIR$" value="119636ff2de7b21dae169da0ed1fb151d304dda3" />
       </map>
     </option>
     <option name="RESET_MODE" value="HARD" />
@@ -172,6 +161,7 @@
         <option value="$PROJECT_DIR$/tmp.py" />
         <option value="$PROJECT_DIR$/failuploadedfiles.txt" />
         <option value="$PROJECT_DIR$/help" />
+        <option value="$PROJECT_DIR$/thread3.py" />
       </list>
     </option>
   </component>
@@ -346,11 +336,11 @@
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.tmp" />
         <item itemvalue="Python.test" />
-        <item itemvalue="Python.scrapy_log" />
         <item itemvalue="Python.upload_github" />
+        <item itemvalue="Python.tmp" />
         <item itemvalue="Python.mythread" />
+        <item itemvalue="Python.scrapy_log" />
       </list>
     </recent_temporary>
   </component>
@@ -491,7 +481,14 @@
       <option name="project" value="LOCAL" />
       <updated>1553587981897</updated>
     </task>
-    <option name="localTasksCounter" value="19" />
+    <task id="LOCAL-00019" summary="创建thread3的异步程序:&#10;1.product读取更新文件在同个线程内，只要读到有更新，就把新的路径添加到文件里去，不管最后是否上传成功&#10;2.增加manager函数进行中转调度处理&#10;3.consumer只进行队列的操作，保证异步时数据的同步性。如果上传失败立马再次放入队列中&#10;4.未完善的是退出后如何将队列中未上传的变量保存到上传失败文件中">
+      <created>1553939656291</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1553939656292</updated>
+    </task>
+    <option name="localTasksCounter" value="20" />
     <servers />
   </component>
   <component name="TodoView" selected-index="1">
@@ -506,7 +503,8 @@
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1295" height="695" extended-state="6" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.49846154" visible="true" weight="0.23113582" />
+      <window_info id="Repositories" weight="0.32962668" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49846154" visible="true" weight="0.23113582" />
       <window_info id="Structure" order="1" sideWeight="0.50153846" side_tool="true" weight="0.23113582" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -519,7 +517,7 @@
       <window_info anchor="bottom" id="Python Console" order="7" weight="0.3283859" />
       <window_info anchor="bottom" id="Terminal" order="8" weight="0.3283859" />
       <window_info anchor="bottom" id="Event Log" order="9" side_tool="true" />
-      <window_info anchor="bottom" id="Version Control" order="10" visible="true" weight="0.3617811" />
+      <window_info active="true" anchor="bottom" id="Version Control" order="10" visible="true" weight="0.94434136" />
       <window_info anchor="bottom" id="Messages" order="11" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
@@ -602,7 +600,8 @@
     <MESSAGE value="Revert &quot;追加Log 毫秒 查看线程情况&quot;&#10;&#10;This reverts commit 1b3ab720" />
     <MESSAGE value="Revert &quot;Revert &quot;追加Log 毫秒 查看线程情况&quot;&quot;&#10;&#10;This reverts commit c6a196fc" />
     <MESSAGE value="追加Log 毫秒 查看线程情况1" />
-    <option name="LAST_COMMIT_MESSAGE" value="追加Log 毫秒 查看线程情况1" />
+    <MESSAGE value="创建thread3的异步程序:&#10;1.product读取更新文件在同个线程内，只要读到有更新，就把新的路径添加到文件里去，不管最后是否上传成功&#10;2.增加manager函数进行中转调度处理&#10;3.consumer只进行队列的操作，保证异步时数据的同步性。如果上传失败立马再次放入队列中&#10;4.未完善的是退出后如何将队列中未上传的变量保存到上传失败文件中" />
+    <option name="LAST_COMMIT_MESSAGE" value="创建thread3的异步程序:&#10;1.product读取更新文件在同个线程内，只要读到有更新，就把新的路径添加到文件里去，不管最后是否上传成功&#10;2.增加manager函数进行中转调度处理&#10;3.consumer只进行队列的操作，保证异步时数据的同步性。如果上传失败立马再次放入队列中&#10;4.未完善的是退出后如何将队列中未上传的变量保存到上传失败文件中" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -654,10 +653,30 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$USER_HOME$/Documents/new 5.py">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/uploadedfiles.txt">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test.log">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="19">
+          <caret line="10" column="68" selection-start-line="10" selection-start-column="68" selection-end-line="10" selection-end-column="68" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://D:/pythonIDE/Anoaconda3/envs/pycharm_conda/Lib/site-packages/wxpy/api/chats/chats.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state>
+        <state relative-caret-position="646">
           <caret line="41" column="24" selection-start-line="41" selection-start-column="24" selection-end-line="41" selection-end-column="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/upload_github.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="228">
+          <caret line="12" column="21" selection-start-line="12" selection-start-column="21" selection-end-line="12" selection-end-column="21" />
         </state>
       </provider>
     </entry>
@@ -670,7 +689,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/mythread.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-258">
+        <state relative-caret-position="266">
           <caret line="18" selection-start-line="18" selection-end-line="19" />
           <folding>
             <element signature="e#0#16#0" expanded="true" />
@@ -678,52 +697,12 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$USER_HOME$/Documents/new 5.py">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/uploadedfiles.txt">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/upload_github.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-157">
-          <caret line="12" column="21" selection-start-line="12" selection-start-column="21" selection-end-line="12" selection-end-column="21" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/test.log">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="19">
-          <caret line="10" column="68" selection-start-line="10" selection-start-column="68" selection-end-line="10" selection-end-column="68" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/scrapy_log.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="91">
-          <caret line="45" selection-start-line="45" selection-end-line="45" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/thread1.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="57">
+        <state relative-caret-position="1482">
           <caret line="84" column="34" selection-start-line="84" selection-start-column="29" selection-end-line="84" selection-end-column="34" />
           <folding>
             <element signature="e#125#141#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/failuploadedfiles.txt">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/tmp.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="568">
-          <caret line="36" column="22" selection-start-line="36" selection-start-column="22" selection-end-line="36" selection-end-column="22" />
-          <folding>
-            <element signature="e#0#16#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -735,12 +714,29 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/failuploadedfiles.txt">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/scrapy_log.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="91">
+          <caret line="45" selection-start-line="45" selection-end-line="45" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/thread3.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="836">
-          <caret line="44" column="93" selection-start-line="44" selection-start-column="93" selection-end-line="44" selection-end-column="93" />
+        <state>
+          <caret selection-start-column="2" selection-end-line="4" selection-end-column="34" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tmp.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="256">
+          <caret line="36" column="22" selection-start-line="36" selection-start-column="22" selection-end-line="36" selection-end-column="22" />
           <folding>
-            <element signature="e#125#141#0" expanded="true" />
+            <element signature="e#0#16#0" expanded="true" />
           </folding>
         </state>
       </provider>
