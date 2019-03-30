@@ -43,7 +43,7 @@ def read_uploadedfile(uploadedfile):
 def clear_file(filepath):
     # print(filepath)
     with open(filepath,'w+') as f:
-            f.write('.')
+            f.truncate()
 def save_uploadedfile(uploadedfile,data:set):
     '''
 
@@ -65,7 +65,7 @@ def save_uploadedfile(uploadedfile,data:set):
 # save_uploadedfile('uploadedfiles.txt','2.txt')
 # print(read_uploadedfile('uploadedfiles.txt'))
 # save_uploadedfile('failuploadedfiles.txt',{'1.txt'})
-clear_file('failuploadedfiles.txt')
+# clear_file('failuploadedfiles.txt')
 gernerate_log(PATH,'123','alarm')
 # uploadedfiles={'alarm 2019-03-12 21-42.txt', 'alarm 2019-03-12 20-38-00.txt', 'alarm 2019-03-12 20-59.txt', 'alarm 2019-03-12 20-38-15.txt'}
 # print(get_newlogset(PATH,uploadedfiles))
