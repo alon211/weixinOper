@@ -1,3 +1,5 @@
+#扫描log文件夹内是否有新文件有的话，上传至github
+
 # 创建thread3的异步程序:
 # 1.product读取更新文件在同个线程内，只要读到有更新，就把新的路径添加到文件里去，不管最后是否上传成功
 # 2.增加manager函数进行中转调度处理
@@ -83,6 +85,7 @@ def consumer(*args):
                 gitcode=git_oper(value)
                 logging.info(f'{threading.current_thread().name}: gitcode= {gitcode}')
                 status=gitcode[0]
+                print(status)
                 # 上传失败的status为False，将失败的再次放入队列中
                 if not status :
                     data.put(value)

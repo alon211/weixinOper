@@ -3,3 +3,9 @@ C:\Users\admin\PycharmProjects\weixinOper\log\2.txt
 C:\Users\admin\PycharmProjects\weixinOper\log\alarm 2019-03-29 21-40.txt
 C:\Users\admin\PycharmProjects\weixinOper\log\4.txt
 C:\Users\admin\PycharmProjects\weixinOper\log\1.txt
+C:\Users\admin\PycharmProjects\weixinOper\log\alarm 2019-03-30 19-09.txt
+C:\Users\admin\PycharmProjects\weixinOper\log\alarm 2019-03-30 19-12.txt
+C:\Users\admin\PycharmProjects\weixinOper\log\alarm 2019-03-30 19-13.txt
+C:\Users\admin\PycharmProjects\weixinOper\log\alarm 2019-03-30 19-14.txt
+C:\Users\admin\PycharmProjects\weixinOper\log\alarm 2019-03-30 19-29.txt
+C:\Users\admin\PycharmProjects\weixinOper\log\alarm 2019-03-31 15-52.txt

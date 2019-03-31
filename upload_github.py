@@ -14,17 +14,24 @@
 import datetime
 import subprocess
 def git_oper(file):
+    # rst=None
     status=subprocess.run(['git','add',file])
-    if status.returncode!=0:
-        return False,status.returncode
+    print(status)
+    # if status.returncode!=0:
+    #     rst= (False,status.returncode)
     status=subprocess.run(['git','commit','-m',datetime.datetime.now().strftime('%Y-%m-%d %H-%M')])
-    if status.returncode!=0:
-        return False,status.returncode
+    print(status)
+    # if status.returncode!=0:
+    #     rst= (False,status.returncode)
+
     status=subprocess.run(['git','push','--set-upstream','origin','master'])
+
     if status.returncode!=0:
         return False,status.returncode
-    return True,status.returncode
-# status=git_oper('1.txt')
+    else:
+        return True,status.returncode
+
+status=git_oper('log/alarm 2019-03-30 19-14.txt')
 # status=subprocess.run(['git','add','log/alarm 2019-03-12 20-38-00.txt'])
 # print(status)
 # status=subprocess.run(['git','commit','-m',datetime.datetime.now().strftime('%Y-%m-%d %H-%M')])
